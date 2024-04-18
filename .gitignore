@@ -3,6 +3,7 @@
 
 # Ignore Python cache directories
 __pycache__/
+myvenv&
 
 # Ignore environment-specific settings
 .env
