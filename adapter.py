@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, abort
 import requests
 import json
 
@@ -15,6 +15,8 @@ def send_message_to_whatsapp():
         senderId = data.get("senderId")
         token = data.get("token")
         message = data.get("message")
+    else: 
+        abort(400)
     
     url = "https://graph.facebook.com/v18.0/" + senderId + "/messages"
     headers = {
@@ -33,5 +35,3 @@ def send_message_to_whatsapp():
         return "<h2>Error por parte del servidor</h2>"
     else: 
         return "<h2>Error desconocido</h2>"
-    
-    return response.text
